@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="mt-4"> 
+        <h2>{{ cat.category }}</h2>
+        <p class="text-muted">Tipo: {{ cat.class }}</p>
+        <hr>
+        <h4>Todos Vencedores</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Ano</th>
+                    <th>Vencedor</th>
+                    <th>Filme</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for v in vencedores %}
+                <tr>
+                    <td>{{ v.year }}</td>
+                    <td>
+                        {# Adicionando links e fallback para Nominee #}
+                        {% if v.nomineeId %}
+                            <a href="/pessoa/{{ v.nomineeId }}">{{ v.nominee }}</a>
+                        {% else %}
+                            {{ v.nominee if v.nominee else '-' }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {# Adicionando links e fallback para Filme #}
+                        {% if v.filmId %}
+                            <a href="/filme/{{ v.filmId }}">{{ v.film }}</a>
+                        {% else %}
+                            {{ v.film if v.film else '-' }}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="mb-4">Top 10 Filmes com Mais Nomeações</h2>
+    
+    <div class="list-group">
+        {% for filme in top_list %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span style="font-size: 1.1em;">
+                <strong>{{ loop.index }}.</strong> {{ filme.film }}
+            </span>
+            <span class="badge bg-primary rounded-pill">
+                {{ filme.total_nomeacoes }} Nomeações
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

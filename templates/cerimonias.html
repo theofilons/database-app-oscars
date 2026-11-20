@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Lista de Cerimónias</h2>
+    <div class="row">
+        {% for c in cerimonias %}
+        <div class="col-md-2 mb-3">
+            <a href="/cerimonia/{{ c.ceremony }}" class="btn btn-outline-dark w-100">
+                {{ c.year }} <br> <small>{{ c.ceremony }}ª Ed.</small>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

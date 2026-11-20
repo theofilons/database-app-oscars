@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Artistas e Nomeados</h2>
+    <form class="d-flex mb-3">
+        <input class="form-control me-2" type="search" name="q" placeholder="Buscar pessoa..." aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+    </form>
+    <div class="list-group">
+        {% for p in pessoas %}
+            <a href="/pessoa/{{ p.nomineeId }}" class="list-group-item list-group-item-action">
+                {{ p.nominee }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

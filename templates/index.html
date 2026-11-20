@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="p-5 mb-4 bg-light rounded-3 text-center">
+        <h1 class="display-4 fw-bold">Bem-vindo ao Oscar Data</h1>
+        <p class="fs-4">Base de dados completa da Academia.</p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="/estatisticas" class="btn btn-primary btn-lg">📊 Perguntas SQL</a>
+            <a href="/top-vencedores" class="btn btn-warning btn-lg">🏆 Top Vencedores</a>
+            <a href="/dashboard" class="btn btn-success btn-lg">📈 Dashboard Gráfico</a>
+        </div>
+    </div>
+{% endblock %}

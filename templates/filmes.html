@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Filmes</h2>
+    <form class="d-flex mb-3">
+        <input class="form-control me-2" type="search" name="q" placeholder="Buscar filme..." aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+    <div class="list-group">
+        {% for filme in filmes %}
+            <a href="/filme/{{ filme.filmId }}" class="list-group-item list-group-item-action">
+                {{ filme.film }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

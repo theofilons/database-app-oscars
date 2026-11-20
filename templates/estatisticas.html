@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 class="mb-4">Estatísticas Gerais</h2>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Cerimónias</div>
+                <div class="card-body"><h3>{{ totais.total_cerimonias }}</h3></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Filmes Nomeados</div>
+                <div class="card-body"><h3>{{ totais.filmes_nomeados }}</h3></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">Total Nomeações</div>
+                <div class="card-body"><h3>{{ totais.total_nomeacoes }}</h3></div>
+            </div>
+        </div>
+    </div>
+    <h3>Histórico Inicial</h3>
+    <table class="table table-bordered">
+        <thead><tr><th>Ano</th><th>Edição</th><th>Nomeações</th></tr></thead>
+        <tbody>
+            {% for linha in historico %}
+            <tr>
+                <td>{{ linha.year }}</td>
+                <td>{{ linha.ceremony }}</td>
+                <td>{{ linha.total_nomeacoes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

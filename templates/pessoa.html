@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>{{ pessoa.nominee }}</h2>
+    <hr>
+    <h4>Histórico</h4>
+    <table class="table table-striped">
+        <thead><tr><th>Ano</th><th>Filme</th><th>Categoria</th><th>Resultado</th></tr></thead>
+        <tbody>
+            {% for h in historico %}
+            <tr>
+                <td>{{ h.year }}</td>
+                <td><a href="/filme/{{ h.filmId }}">{{ h.film }}</a></td>
+                <td>{{ h.category }}</td>
+                <td>{{ '🏆 Venceu' if h.winner else 'Indicado' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

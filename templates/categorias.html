@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Categorias do Oscar</h2>
+    <div class="list-group">
+        {% for c in categorias %}
+            <a href="/categoria/{{ c.catId }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                {{ c.category }}
+                <span class="badge bg-secondary">{{ c.class }}</span>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

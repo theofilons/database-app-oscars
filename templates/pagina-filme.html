@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Detalhes do Filme: {{ movie.film }}</h2>
+    <p>ID do Filme: {{ movie.filmId }}</p>
+
+    <hr>
+
+    <h3>Histórico de Nomeações</h3>
+    
+    {% if nominations %}
+        <table class="table table-striped">
+            <thead>
+                <tr>                    
+                    <th>Ano</th>
+                    <th>Cerimónia</th>
+                    <th>Categoria</th>
+                    <th>Nomeado(a)</th>
+                    <th>Detalhe</th>
+                    <th>Resultado</th>  <th>Nota</th>      <th>Citação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for nom in nominations %}
+                <tr>
+                    
+                    <td>{{ nom.year }}</td>
+                    <td>{{ nom.ceremony }}</td>                    
+                    <td>{{ nom.category }}</td>
+                    
+                    <td>
+                        {{ nom.nominee_name if nom.nominee_name else movie.film }}
+                    </td>
+                    <td>{{ nom.detail }}</td>
+                    
+                    
+                    <td>
+    {% set winner_status = nom.winner | string | upper | trim %}
+    
+    {% if winner_status in ['1', 'Y', 'TRUE'] %}
+        <span style="color: green; font-weight: bold;">Vencedor 🏆</span>
+    {% else %}
+        Indicado
+    {% endif %}
+</td>
+                    
+                    <td>{{ nom.note }}</td>
+                    
+                    <td>{{ nom.citation }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Este filme não possui registo de nomeações.</p>
+    {% endif %}
+
+{% endblock %}

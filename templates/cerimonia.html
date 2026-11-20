@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Nomeações de {{ info.year }} ({{ info.ceremony }}ª Edição)</h2>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Ator/Nomeado</th>
+                <th>Filme Relacionado</th>
+                <th>Resultado</th>  {# <-- COLUNA DE RESULTADO #}
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in vencedores %}
+            <tr>
+                <td>{{ v.category }}</td>
+                
+                <td>
+                    {# Coluna Ator/Nomeado com link para a pessoa #}
+                    {% if v.nomineeId %}
+                        <a href="/pessoa/{{ v.nomineeId }}">{{ v.nominee }}</a>
+                    {% else %}
+                        - 
+                    {% endif %}
+                </td>
+                <td>
+                    {# Coluna Filme Relacionado com link para o filme #}
+                    {% if v.filmId %}
+                        <a href="/filme/{{ v.filmId }}">{{ v.film }}</a>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>
+                    {# LÓGICA CORRIGIDA E ROBUSTA COM EMOJIS #}
+                    {% set winner_value = v.winner | string | lower | trim %}
+                    
+                    {% if winner_value in ['y', '1', 'true'] %}
+                        🏆 <strong style="color: green;">Vencedor</strong>
+                    {% else %}
+                         Indicado
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
